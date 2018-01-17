@@ -1,0 +1,31 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+<h1>Task List</h1>
+<hr size=30>
+{% if tasks %}
+<ul>
+    {% for task in tasks %}
+    <p>task:{{ task['task'] }},status:{{ task['status'] }}</p>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>Don't have Task.</p>
+{% endif %}
+<hr size=30>
+<div>
+    {{ wtf.quick_form(add_form) }}
+</div>
+
+<div>
+    {{ wtf.quick_form(complete_form) }}
+</div>
+
+<div>
+    {{ wtf.quick_form(restart_form) }}
+</div>
+
+{% endblock %}}
